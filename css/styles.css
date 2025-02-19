@@ -23,6 +23,9 @@ body {
 }
 
 .main-nav ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;  /* Reduced gap between main menu items */
     list-style: none;
 }
 
@@ -34,6 +37,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     padding: 0.5rem 0;
+    white-space: nowrap;  /* Prevent text wrapping within links */
 }
 
 .main-nav a:hover {
@@ -57,7 +61,7 @@ body {
 }
 
 .nav-logo {
-    height: 30px;  /* Adjust this value based on your needs */
+    height: 50px;  /* Adjust this value based on your needs */
     width: auto;
     vertical-align: middle;
     transition: transform 0.3s ease;
@@ -70,6 +74,16 @@ body {
 /* Remove the underline effect for the logo link */
 .main-nav a:has(.nav-logo)::after {
     display: none;
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Active state for navigation items */
+.main-nav a.active {
+    font-weight: 500;
 }
 
 /* Container styles */
@@ -250,6 +264,14 @@ section.visible {
     .large-text {
         font-size: 1.5rem;
     }
+
+    .main-nav ul {
+        gap: 1rem;
+    }
+    
+    .main-nav a {
+        font-size: 0.6rem;
+    }
 }
 
 .name-logo {
@@ -277,4 +299,199 @@ section.visible {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.project-images {
+    display: flex;
+    gap: 2rem;  /* Space between images */
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.project-img-container {
+    position: relative;
+    width: 150%;  /* Increased from 55% to 80% */
+    margin: 0 auto;
+}
+
+.project-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.animated {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);  /* Center and make 1.5x larger */
+    opacity: 0;
+    width: 120%;  /* Make the animated image 120% of the container */
+}
+
+.project-img-container:hover .static {
+    opacity: 0;
+}
+
+.project-img-container:hover .animated {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .project-img-container {
+        width: 100%;
+    }
+}
+
+.project-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.project-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+    border: none;
+}
+
+.project-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Code request tooltip */
+.code-request {
+    position: relative;
+}
+
+.code-request:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: #000;
+    color: #fff;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.code-request:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-projects {
+    position: relative;
+}
+
+.project-submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;  /* Start hidden */
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+    min-width: max-content;
+    background-color: white;
+    pointer-events: none;  /* Initially no interaction */
+    opacity: 0;  /* Start fully transparent */
+    transition: opacity 0.3s ease;
+}
+
+/* Only show submenu when hovering over nav-projects */
+.nav-projects:hover .project-submenu {
+    display: flex;
+    pointer-events: auto;  /* Enable interaction */
+    opacity: 1;  /* Make visible */
+}
+
+.project-submenu li {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.project-submenu a {
+    font-size: 0.7rem;
+    padding: 0.3rem 0;
+    opacity: 1;  /* Ensure submenu items are fully visible */
+}
+
+/* Ensure submenu items maintain the same hover effect */
+.project-submenu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.project-submenu a:hover::after {
+    transform: scaleX(1);
+}
+
+.title-container {
+    margin-bottom: 2rem;
+}
+
+/* Base title logo size */
+.title-logo {
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Specific sizes for each project title */
+#lift-it-up .title-logo {
+    max-width: 300px;
+}
+
+#cut-or-not .title-logo {
+    max-width: 400px;
+}
+
+#inliers .title-logo {
+    max-width: 350px;  /* Adjust this value based on your preference */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #lift-it-up .title-logo {
+        max-width: 200px;
+    }
+    
+    #cut-or-not .title-logo {
+        max-width: 280px;
+    }
+    
+    #inliers .title-logo {
+        max-width: 240px;
+    }
 } 

@@ -13,8 +13,14 @@
     <nav class="main-nav">
         <ul>
             <li><a href="#home"><img src="images/name2.png" alt="TOP" class="nav-logo"></a></li>
-            <!-- <li><a href="#about">ABOUT</a></li> -->
-            <li><a href="#projects">PROJECTS</a></li>
+            <li class="nav-projects">
+                <a href="#projects">PROJECTS</a>
+                <ul class="project-submenu">
+                    <li><a href="#lift-it-up">LIFT IT UP</a></li>
+                    <li><a href="#cut-or-not">TO CUT OR NOT</a></li>
+                    <li><a href="#inliers">INLIERS VS OUTLIERS</a></li>
+                </ul>
+            </li>
             <li><a href="#contact">CONTACT</a></li>
         </ul>
     </nav>
@@ -30,37 +36,98 @@
                     <!-- <p class="subtitle">Open to work.</p> -->
                 </div>
                 <div class="right-content">
-                    <h2>About Me</h2>
+                    <h2 class="large-text">About Me</h2>
                     <p>I am a Research Engineer in the GraphDeco team at Inria Sophia Antipolis. After earning my PhD at Ecole Polytechnique in 2023 with a focus on numerical optimization for geometry processing and animation, I have been devoted to develop interactive tools that bridge the gap between numerical computation and creative design.</p>
                 </div>
             </section>
- 
-            <section id="about" class="split-section">
+
+            <section id="lift-it-up" class="split-section">
                 <div class="left-content">
-                    <h2>About Me</h2>
-                    <p class="large-text">Your main description here</p>
-                </div>
+                    <div class="title-container">
+                        <img src="images/lift_up.png" alt="Lift it Up!" class="title-logo">
+                        <h3>User-Interactive 3D Reconstruction from Conceptual Sketching (ongoing)</h3>
+                    </div>
+                    <p> I have developed a Blender add-on that bridges the Grease Pencil drawing interface with a symmetry-driven 3D reconstruction
+                        algorithm for concept sketches. </p>
+                </div>                    
                 <div class="right-content">
+                    <!-- Project illustration or image -->
+
+                <div class="project-item">
+                    <div class="project-images">
+                        <div class="project-img-container">
+                            <img src="images/folding.png" alt="Folding Illustration" class="project-img static">
+                            <img src="images/folding.gif" alt="Folding Animation" class="project-img animated">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <section id="cut-or-not" class="split-section">
+                <div class="left-content">
+                    <div class="project-item">
+                        <div class="project-images">
+                            <div class="project-img-container">
+                                <img src="images/statue3-ours.png" alt="Folding Illustration" class="project-img static">
+                                <img src="images/statue3.gif" alt="Folding Animation" class="project-img animated">
+                            </div>
+                        </div>
+                    </div>
+                </div>                    
+                <div class="right-content">
+                    <div class="title-container">
+                        <img src="images/to_cut.png" alt="To cut or not to cut?" class="title-logo">
+                        <h3>Joint Optimization of Parameterization and Seam Placements for Texture Mapping</h3>
+                    </div>
+                    <p>A robust statistics-based approach to jointly optimize parameterization (to lower distortion of the texture) and seam placement (to reduce the number of seams) for texture mapping.</p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" class="project-link code-request" data-tooltip="Code available upon request">
+                            <i class="fab fa-github"></i> CODE
+                        </a>
+                        <a href="https://theses.hal.science/tel-04451964" target="_blank" class="project-link">
+                            <i class="fas fa-file-pdf"></i> PAPER
+                        </a>
+                    </div>
                 </div>
             </section>
 
-            <section id="projects" class="split-section">
+
+            <section id="inliers" class="split-section">
                 <div class="left-content">
-                    <h2>Projects</h2>
-                    <div class="project-item">
-                        <h3>Project Name</h3>
-                        <p>Project description goes here. Keep it clean and minimal.</p>
+                    <div class="title-container">
+                        <img src="images/inlier.png" alt="Inliers vs. Outliers" class="title-logo">
+                        <h3>Robust Pointset Denoising of Piecewise-Smooth Surfaces through Line Processes.</h3>
                     </div>
-                </div>
+                    <p> I have developed a robust statistics-based framework for denoising 3D pointset, which can also be adapted to applications requiring the handling of discontinuities in geometry processing.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/kwwei/line-process-pointset-denoising" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> CODE
+                        </a>
+                        <a href="https://kwwei.github.io/files/line_process.pdf" target="_blank" class="project-link">
+                            <i class="fas fa-file-pdf"></i> PAPER
+                        </a>
+                    </div>
+                </div>                    
                 <div class="right-content">
                     <!-- Project illustration or image -->
-                    <div class="illustration-placeholder"></div>
+
+                <div class="project-item">
+                    <div class="project-images">
+                        <!-- <div class="project-img-container"> -->
+                            <img src="images/denoising.png" alt="Denoising Illustration" class="project-img static">
+                            <!-- <img src="images/folding.gif" alt="Folding Animation" class="project-img animated"> -->
+                        <!-- </div> -->
+                    </div>
                 </div>
+            </div>
             </section>
+
+
 
             <section id="contact">
                 <h2>Contact</h2>
-                <p>Email: your.email@example.com</p>
+                <p>Email: kayiwei@gmail.com</p>
                 <p>GitHub: <a href="https://github.com/kwwei">github.com/kwwei</a></p>
             </section>
         </div>

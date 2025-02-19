@@ -114,6 +114,8 @@ html {
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 }
 
 /* Split section layout adjustments */
@@ -235,6 +237,8 @@ section {
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.8s ease-out;
+    min-height: 100vh;
+    scroll-snap-align: start;
 }
 
 section.visible {

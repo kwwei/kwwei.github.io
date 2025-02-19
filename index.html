@@ -4,53 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jiayi Wei</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        section {
-            margin-bottom: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Add the Termina font from Adobe Fonts (or similar alternative) -->
+    <link rel="stylesheet" href="https://use.typekit.net/[your-kit-code].css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Jiayi Wei</h1>
-            <p>Open to work</p>
-        </header>
+    <div class="mouse-follower"></div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#home">TOP</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+    <div class="viewport-container">
+        <!-- <div class="bubble" style="width: 100px; height: 100px; top: 20%; left: 10%; animation: bubble-float 8s infinite ease-in-out;"></div>
+        <div class="bubble" style="width: 150px; height: 150px; top: 60%; right: 15%; animation: bubble-float 12s infinite ease-in-out;"></div>
+        <div class="bubble" style="width: 80px; height: 80px; bottom: 30%; left: 20%; animation: bubble-float 10s infinite ease-in-out;"></div>
+         -->
+        <div class="scroll-container">
+            <section id="home" class="split-section">
+                <div class="left-content">
+                    <h1>Jiayi Wei</h1>
+                    <p class="subtitle">トゥモロー・ウェイ</p>
+                </div>
+                <div class="right-content">
+                    <p class="large-text">Open to work.</p>
+                    <p>Software Engineer.</p>
+                </div>
+            </section>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p></p>
-        </section>
+            <section id="about" class="split-section">
+                <div class="left-content">
+                    <h2>About Me</h2>
+                    <p class="large-text">Your main description here</p>
+                </div>
+                <div class="right-content">
+                    <!-- You can add an illustration or image here -->
+                    <div class="illustration-placeholder"></div>
+                </div>
+            </section>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <ul>
-                <li>Project 1 - Description</li>
-                <li>Project 2 - Description</li>
-                <li>Project 3 - Description</li>
-            </ul>
-        </section>
+            <section id="projects" class="split-section">
+                <div class="left-content">
+                    <h2>Projects</h2>
+                    <div class="project-item">
+                        <h3>Project Name</h3>
+                        <p>Project description goes here. Keep it clean and minimal.</p>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <!-- Project illustration or image -->
+                    <div class="illustration-placeholder"></div>
+                </div>
+            </section>
 
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: </p>
-            <p>GitHub: <a href="https://github.com/kwwei">github.com/kwwei</a></p>
-            <!-- <p>LinkedIn: <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a></p> -->
-        </section>
+            <section id="contact">
+                <h2>Contact</h2>
+                <p>Email: your.email@example.com</p>
+                <p>GitHub: <a href="https://github.com/kwwei">github.com/kwwei</a></p>
+            </section>
+        </div>
     </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

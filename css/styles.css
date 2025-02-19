@@ -1,3 +1,4 @@
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,148 +6,23 @@
 }
 
 body {
-    font-family: 'Termina', 'Space Grotesk', sans-serif;
-    overflow: hidden;
-    background-color: #f5f5f5;
-}
-
-.viewport-container {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border: 10px solid #000;
-    overflow: hidden;
-}
-
-.viewport-container::before,
-.viewport-container::after {
-    /* Remove this entire block */
-    /* content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-    animation: float 15s infinite linear;
-    opacity: 0.1;
-    z-index: -1; */
-}
-
-.viewport-container::before {
-    top: -150px;
-    left: -150px;
-    animation-delay: -7s;
-}
-
-.viewport-container::after {
-    bottom: -150px;
-    right: -150px;
-}
-
-
-.scroll-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    padding: 0;
-}
-
-.content {
-    max-width: 100%;
-    padding: 0;
-}
-
-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
-    margin: 20px 0;
-    border-radius: 20px;
-    padding: 40px;
-}
-
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-section:nth-child(1),
-section:nth-child(2),
-section:nth-child(3),
-section:nth-child(4) {
+    font-family: "termina", sans-serif;
     background-color: white;
     color: black;
-}
-
-h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1.2em;
     line-height: 1.6;
+    overflow: hidden;
 }
 
-.mouse-follower {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: #1be7e7;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1000;
-    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.mouse-follower.hover {
-    width: 30px;
-    height: 30px;   
-    background-color: #ffeb3b;
-    /* mix-blend-mode: multiply; */
-}
-
-/* Add font-face if you have the Termina font files */
-@font-face {
-    font-family: 'Termina';
-    src: url('path-to-your-font/Termina-Regular.woff2') format('woff2');
-}
-
-/* Alternative using a similar Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
-
+/* Navigation */
 .main-nav {
     position: fixed;
     top: 0;
     right: 0;
-    width: auto;
     padding: 2rem;
     z-index: 100;
 }
 
 .main-nav ul {
-    display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
     list-style: none;
 }
 
@@ -180,73 +56,94 @@ p {
     transform: scaleX(1);
 }
 
-/* Update mouse follower for nav items */
-.mouse-follower.nav-hover {
-    transform: scale(2);
-    background-color: #000;
-    mix-blend-mode: difference;
+.nav-logo {
+    height: 30px;  /* Adjust this value based on your needs */
+    width: auto;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
 }
 
-/* 
-.frame-pixel {
+.main-nav a:hover .nav-logo {
+    transform: scale(1.1);  /* Maintains the hover effect we had for text */
+}
+
+/* Remove the underline effect for the logo link */
+.main-nav a:has(.nav-logo)::after {
+    display: none;
+}
+
+/* Container styles */
+.viewport-container {
     position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: #000;
-    transition: background-color 0.3s ease;
-}
-
-/* Blinking colors */
-.blink-yellow {
-    background-color: #ffde00;
-    animation: blink 5s ease-out forwards;
-}
-
-.blink-blue {
-    background-color: #45B7D1;
-    animation: blink 5s ease-out forwards;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-        background-color: #000;
-    }
-} */
-
-.split-section {
+    width: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
+    background-color: white;
+    overflow: hidden;
+}
+
+.scroll-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 0;
+    
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Split section layout adjustments */
+.split-section {
+    display: flex;
     min-height: 100vh;
-    padding: 10% 10%;
-    margin: 0;
-    background: white;
-    gap: 4rem;
+    padding: 2rem 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: 10rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.left-content {
-    flex: 0 0 auto;
-    text-align: left;
-    margin-right: 30%;
+.left-content, .right-content {
+    flex: 0 1 auto;
+    padding: 2rem;
+    max-width: 500px;
 }
 
-.right-content {
-    flex: 0 0 auto;
-    text-align: center;
-    margin-left: 30%;
-}
-
-.big-title {
+/* Typography */
+h1, .big-title {
+    font-family: "termina", "Space Grotesk", sans-serif;
     font-size: 5rem;
     font-weight: 500;
     margin-bottom: 1rem;
     line-height: 1.1;
     letter-spacing: -0.02em;
+}
+
+.headline {
+    font-family: "termina", "Space Grotesk", sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle, .description, p {
+    font-family: "neue-haas-grotesk-display", "Space Grotesk", sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    font-weight: 400;
 }
 
 .japanese-title {
@@ -255,39 +152,129 @@ p {
     letter-spacing: 0.1em;
 }
 
-.headline {
+.large-text {
     font-size: 2rem;
-    margin-bottom: 0 rem;
-    font-weight: 500;
-}
-.subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 0;
-    color: #333;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
 }
 
-.description {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #666;
-}
-
-.description p {
-    margin-bottom: 0.8rem;
-}
-
-.illustration-placeholder {
-    width: 100%;
-    height: 400px;
-    background: #f5f5f5;
-    border: 1px solid #eee;
-}
-
+/* Project styles */
 .project-item {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .project-item h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
+
+/* Contact section */
+#contact {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contact a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+}
+
+/* Placeholder for illustrations */
+.illustration-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #f5f5f5;
+    margin: 2rem 0;
+}
+
+/* Updated mouse follower styles */
+.mouse-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mouse-follower.hover {
+    width: 30px;
+    height: 30px;   
+    background-color: #ffeb3b;
+}
+
+.mouse-follower.nav-hover {
+    transform: scale(2);
+    background-color: #000;
+    mix-blend-mode: difference;
+}
+
+/* Section animation */
+section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .split-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+    }
+
+    .left-content, .right-content {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .large-text {
+        font-size: 1.5rem;
+    }
+}
+
+.name-logo {
+    max-width: 400px;  /* Adjust this value based on your needs */
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Make it responsive */
+@media (max-width: 768px) {
+    .name-logo {
+        max-width: 300px;  /* Smaller size for mobile devices */
+    }
+}
+
+/* Ensure the container allows for centering */
+.viewport-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+} 

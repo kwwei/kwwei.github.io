@@ -33,7 +33,7 @@ body {
     color: #000;
     text-decoration: none;
     font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     transition: all 0.3s ease;
     position: relative;
     padding: 0.5rem 0;
@@ -156,14 +156,14 @@ h1, .big-title {
     font-family: "neue-haas-grotesk-display", "Space Grotesk", sans-serif;
     font-size: 1.2rem;
     line-height: 1.6;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
     font-weight: 400;
 }
 
 .japanese-title {
     font-size: 1.2rem;
     margin-bottom: 3rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
 }
 
 .large-text {
@@ -221,7 +221,7 @@ h1, .big-title {
 .mouse-follower.hover {
     width: 30px;
     height: 30px;   
-    background-color: #ffeb3b;
+    /* background-color: yellow; */
 }
 
 .mouse-follower.nav-hover {
@@ -355,7 +355,7 @@ section.visible {
     color: #000;
     text-decoration: none;
     font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     transition: all 0.3s ease;
     position: relative;
     padding: 0.5rem 0;
@@ -494,4 +494,13 @@ section.visible {
     #inliers .title-logo {
         max-width: 240px;
     }
+}
+
+/* Typography with increased letter spacing */
+h3, .subtitle {
+    letter-spacing: 0.05em;  /* Increased from default */
+}
+
+p, .description {
+    letter-spacing: 0.06em;  /* Increased from default */
 } 

@@ -64,4 +64,31 @@ document.querySelectorAll('.main-nav a').forEach(element => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const magnifyContainer = document.querySelector('.magnify-container');
+    const magnifyingGlass = document.querySelector('.magnifying-glass');
+    const img = magnifyContainer.querySelector('img');
+
+    magnifyContainer.addEventListener('mousemove', function(e) {
+        const bounds = magnifyContainer.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+
+        // Calculate magnification position
+        const magnifyX = (x / bounds.width) * 100;
+        const magnifyY = (y / bounds.height) * 100;
+
+        magnifyingGlass.style.opacity = '1';
+        magnifyingGlass.style.left = `${x - 75}px`;
+        magnifyingGlass.style.top = `${y - 75}px`;
+        magnifyingGlass.style.backgroundImage = `url(${img.src})`;
+        magnifyingGlass.style.backgroundPosition = `${magnifyX}% ${magnifyY}%`;
+        magnifyingGlass.style.backgroundSize = `${bounds.width * 2}px`;
+    });
+
+    magnifyContainer.addEventListener('mouseleave', function() {
+        magnifyingGlass.style.opacity = '0';
+    });
+});
+
 

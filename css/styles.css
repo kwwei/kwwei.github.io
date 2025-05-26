@@ -525,4 +525,161 @@ p, .description {
     border: 1px solid #000;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     transition: opacity 0.2s;
+}
+
+/* Sausage Dog Border */
+.sausage-dog {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.sausage-dog-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+
+.dog-head {
+    top: 0;
+    left: 0;
+}
+
+.dog-body {
+    position: absolute;
+    top: 0;
+    left: 24px;
+    height: 12px;
+    background: #8B4513;
+    border-radius: 6px;
+    z-index: 2000;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+.dog-tail {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    z-index: 2001;
+    background: none;
+    border-radius: 0;
+    object-fit: contain;
+    pointer-events: none;
+    /* border: 2px solid red; */
+}
+
+.dog-head {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    z-index: 2001;
+    background: none;
+    border-radius: 0;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+
+.dog-body-top {
+    position: absolute;
+    top: 0;
+    left: 96px;
+    height: 96px;
+    width: 0;
+    z-index: 2000;
+    /* object-fit not needed for inline SVG */
+}
+.dog-corner-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 96px;
+    height: 96px;
+    transform: rotate(0deg);
+    z-index: 2000;
+    object-fit: contain;
+}
+.dog-body-right {
+    position: absolute;
+    top: 96px;
+    right: 0;
+    width: 96px;
+    height: 0;
+    z-index: 2000;
+    object-fit: fill;
+}
+.dog-corner-bottom-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 96px;
+    height: 96px;
+    transform: rotate(90deg);
+    z-index: 2000;
+    object-fit: contain;
+}
+.dog-body-bottom {
+    position: absolute;
+    left: 96px;
+    bottom: 0;
+    height: 96px;
+    width: 0;
+    z-index: 2000;
+    object-fit: contain;
+}
+.dog-corner-bottom-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 96px;
+    height: 96px;
+    transform: rotate(180deg);
+    z-index: 2000;
+    object-fit: contain;
+}
+.dog-body-left {
+    position: absolute;
+    left: 0;
+    top: 96px;
+    width: 96px;
+    height: 0;
+    z-index: 2000;
+    object-fit: fill;
+}
+
+.dog-body-rect {
+    background: #000;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 2000;
+}
+.dog-body-top {
+    top: 0;
+    left: 0;
+    height: 8px;
+    width: 0;
+}
+.dog-body-bottom {
+    left: 0;
+    bottom: 0;
+    height: 8px;
+    width: 0;
+}
+.dog-body-right {
+    right: 0;
+    top: 0;
+    width: 8px;
+    height: 0;
+}
+.dog-body-left {
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 0;
 } 

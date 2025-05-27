@@ -99,30 +99,17 @@ const segLeft = document.querySelector('.dog-body-left');
 const borderHead = document.querySelector('.dog-head');
 const borderTail = document.querySelector('.dog-tail');
 
-function getBorderSegments() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    const seg = 96;
-    return {
-        top: w - seg - seg, // minus head and corner
-        right: h - seg - seg,     // minus two corners
-        bottom: w - seg - seg,    // minus two corners
-        left: h - seg - seg // minus corner and head
-    };
-}
-
 function setDogBorderByScroll() {
     const scrollContainer = document.querySelector('.scroll-container');
     const scrollMax = scrollContainer.scrollHeight - scrollContainer.clientHeight;
     const scrollPos = scrollContainer.scrollTop;
     const percent = scrollMax === 0 ? 0 : scrollPos / scrollMax;
-    const segs = getBorderSegments();
-    const seg = 96;
     const thickness = 8;
     const w = window.innerWidth - thickness;
     const h = window.innerHeight - thickness;
     const total = 2 * (w + h);
     let fill = percent * total;
+
     // By default, connect head and tail
     if (fill <= 0) {
         segTop.style.left = '96px';
@@ -132,20 +119,23 @@ function setDogBorderByScroll() {
         borderTail.style.left = '96px';
         borderTail.style.top = '0px';
         borderTail.style.transform = 'rotate(0deg) scaleX(1)';
+        // Hide other bars
         segRight.style.height = '0px';
         segBottom.style.width = '0px';
         segLeft.style.height = '0px';
         return;
     }
+
     // Top
     if (fill <= w - 96) {
         segTop.style.left = '96px';
         segTop.style.top = '0px';
         segTop.style.width = (fill > 0 ? fill : 0) + 'px';
         segTop.style.height = thickness + 'px';
-        borderTail.style.left = (96 + fill - 96) + 'px';
+        borderTail.style.left = (96 + fill) + 'px';
         borderTail.style.top = '0px';
-        borderTail.style.transform = 'rotate(0deg) scaleX(1)';
+        borderTail.style.transform = 'rotate(0deg) scaleX(1)'; // Default: horizontal
+        // Hide other bars
         segRight.style.height = '0px';
         segBottom.style.width = '0px';
         segLeft.style.height = '0px';
@@ -161,9 +151,10 @@ function setDogBorderByScroll() {
             segRight.style.top = '0px';
             segRight.style.height = (fill > 0 ? fill : 0) + 'px';
             segRight.style.width = thickness + 'px';
-            borderTail.style.left = w + 'px';
-            borderTail.style.top = (fill - 96) + 'px';
-            borderTail.style.transform = 'rotate(90deg) scaleX(1)';
+            borderTail.style.left = (w - 80 - thickness) + 'px';
+            borderTail.style.top = fill + 'px';
+            borderTail.style.transform = 'rotate(90deg) scaleX(1)'; // Down
+            // Hide other bars
             segBottom.style.width = '0px';
             segLeft.style.height = '0px';
         } else {
@@ -173,21 +164,22 @@ function setDogBorderByScroll() {
             segRight.style.width = thickness + 'px';
             fill -= h;
             // Bottom
-            if (fill <= w - 96) {
+            if (fill <= w) {
                 segBottom.style.left = (w - fill) + 'px';
                 segBottom.style.top = h + 'px';
                 segBottom.style.width = (fill > 0 ? fill : 0) + 'px';
                 segBottom.style.height = thickness + 'px';
                 borderTail.style.left = (w - fill - 96) + 'px';
-                borderTail.style.top = h + 'px';
-                borderTail.style.transform = 'rotate(0deg) scaleX(-1)';
+                borderTail.style.top = (h - 80 - thickness) + 'px';
+                borderTail.style.transform = 'rotate(0deg) scaleX(-1)'; // Mirrored
+                // Hide left bar
                 segLeft.style.height = '0px';
             } else {
-                segBottom.style.left = '96px';
+                segBottom.style.left = '0px';
                 segBottom.style.top = h + 'px';
-                segBottom.style.width = (w - 96) + 'px';
+                segBottom.style.width = w + 'px';
                 segBottom.style.height = thickness + 'px';
-                fill -= (w - 96);
+                fill -= w;
                 // Left
                 if (fill <= h) {
                     segLeft.style.left = '0px';
@@ -195,21 +187,23 @@ function setDogBorderByScroll() {
                     segLeft.style.height = (fill > 0 ? fill : 0) + 'px';
                     segLeft.style.width = thickness + 'px';
                     borderTail.style.left = '0px';
-                    borderTail.style.top = (h - fill - 96) + 'px';
-                    borderTail.style.transform = 'rotate(90deg) scaleX(-1)';
+                    borderTail.style.top = Math.max(0, h - fill - 96) + 'px';
+                    borderTail.style.transform = 'rotate(90deg) scaleX(-1)'; // Up, mirrored
                 } else {
                     segLeft.style.left = '0px';
                     segLeft.style.top = '0px';
                     segLeft.style.height = h + 'px';
                     segLeft.style.width = thickness + 'px';
+                    // Tail at start (full loop)
                     borderTail.style.left = '96px';
                     borderTail.style.top = '0px';
-                    borderTail.style.transform = 'rotate(0deg) scaleX(1)';
+                    borderTail.style.transform = 'rotate(0deg) scaleX(1)'; // Reset
                 }
             }
         }
     }
 }
+
 window.addEventListener('resize', setDogBorderByScroll);
 document.querySelector('.scroll-container').addEventListener('scroll', setDogBorderByScroll);
 setDogBorderByScroll();

@@ -346,6 +346,26 @@ section.visible {
 @media (max-width: 768px) {
     .project-img-container {
         width: 100%;
+        margin: 1rem 0;  /* Add vertical spacing between images on mobile */
+    }
+
+    .project-images {
+        flex-direction: column;  /* Stack images vertically on mobile */
+        gap: 1rem;  /* Reduce gap between images on mobile */
+    }
+
+    .split-section {
+        gap: 2rem;  /* Reduce gap between sections on mobile */
+        padding: 1rem;  /* Reduce padding on mobile */
+    }
+
+    .left-content, .right-content {
+        padding: 1rem;
+        width: 100%;  /* Ensure content takes full width on mobile */
+    }
+
+    .animated {
+        transform: translate(-50%, -50%) scale(1.2);  /* Slightly reduce the scale on mobile */
     }
 }
 
